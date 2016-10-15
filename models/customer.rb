@@ -40,4 +40,21 @@ class Customer
    SqlRunner.run(sql)
   end
 
+#------------ Read all customer ------------------
+  def self.all()
+    sql = "SELECT * FROM customers"
+    return Customer.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    customers = SqlRunner.run( sql )
+    result = customers.map { |customer| Customer.new( customer ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Customer.map_items(sql)
+    return result.first
+  end
+
 end #---- Customer class end ------------

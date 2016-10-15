@@ -38,6 +38,22 @@ class Film
   def self.delete_all()
    sql = "DELETE FROM films"
    SqlRunner.run(sql)
- end
+  end
 
+ #------------ Read all films ------------------
+  def self.all()
+    sql = "SELECT * FROM films"
+    return Film.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    films = SqlRunner.run( sql )
+    result = films.map { |film| Film.new( film ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Film.map_items(sql)
+    return result.first
+  end
 end #-- Film class end ----------

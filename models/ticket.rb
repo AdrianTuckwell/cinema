@@ -39,4 +39,21 @@ class Ticket
     SqlRunner.run(sql)
   end
 
+  #------------ Read all tickets ------------------
+  def self.all()
+    sql = "SELECT * FROM tickets"
+    return Ticket.map_items(sql)
+  end
+
+  def self.map_items(sql)
+    tickets = SqlRunner.run( sql )
+    result = tickets.map { |ticket| Ticket.new( ticket ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Ticket.map_items(sql)
+    return result.first
+  end
+
 end #--- Ticket class end ------------------
