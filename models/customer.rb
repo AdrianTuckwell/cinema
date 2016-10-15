@@ -64,8 +64,4 @@ class Customer
   end
 
 
-
-
-
-
 end #---- Customer class end ------------

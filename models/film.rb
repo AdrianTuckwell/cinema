@@ -56,4 +56,10 @@ class Film
     result = Film.map_items(sql)
     return result.first
   end
+
+  #------------ Read customers that have watched a film -------
+  def customers()
+    sql = "SELECT customers.* FROM customers INNER JOIN tickets ON tickets.customer_id = customers.id WHERE film_id = #{id};"
+    return Customer.map_items(sql)
+  end
 end #-- Film class end ----------
