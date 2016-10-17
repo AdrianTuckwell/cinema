@@ -63,5 +63,11 @@ class Customer
     return Film.map_items(sql)
   end
 
+  #------------ Read tickets per customer ------------------
+  def tickets()
+    sql = "SELECT * FROM tickets WHERE customer_id = #{id}"
+    return Customer.map_items(sql)
+  end
+
 
 end #---- Customer class end ------------
